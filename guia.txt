@@ -1,0 +1,84 @@
+1) Instalaciones npm
+ npm create vite@latest .
+    npm install
+
+ npm install react-router-dom
+ npm install bootstrap@5.3.3
+ npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+
+2) configuraciones  
+    bootstrap 
+    en index.html agregar estas lineas 
+        despues del </title> 
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        andes del </body>
+        <script type="module" src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> 
+
+    limpiar app.css, index.css 
+    limpiar el archivo app.jsx y aplicar el rafce 
+    agregar fragmen
+    <>
+        <h3 className="text-center py-4">Hola Mundo</h3>
+    </>
+
+    Color de fondo y color del texto por defecto en el index.html
+         <body class="bg-dark text-white-50">
+
+    probar iconos en app.jsx
+       
+            import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+            import { faHome } from '@fortawesome/free-solid-svg-icons'
+            import { faUser } from '@fortawesome/free-solid-svg-icons'
+            import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+
+            const App = () => {
+            return (
+                <>
+                    <div >
+                        <h3 className="text-center py-4">Hola Mundo</h3>
+                    </div> 
+                    <div className='text-center'>
+                        <FontAwesomeIcon icon={faHome} className='text-danger fs-1 mx-3 ' />
+                        <FontAwesomeIcon icon={faUser} className='text-success fs-1 mx-3'/>
+                        <FontAwesomeIcon icon={faCartShopping}  className='text-warning fs-1 mx-3'/>
+                    </div>
+            
+
+                </>
+            )
+            }
+
+            export default App
+
+3) crear las carpetas pages y components dentro de src
+   crear los componentes  Header.jsx, Footer.jsx y "aplicar el rafce"
+    - importar el navbar y un footer de bootstrap  y apriplar el "HTML to JSX"
+    - configurar el color y agragar el logo
+    - import logo from '../assets/logo.jpg' el logo debe estar en assets
+    - adaptar el menu a Ininio, Movil, Laptop, Tienda, Categorias, Contactos 
+
+5) crear dentro de page las paginas Inicio, Tienda, Movil, Laptop, Categorias, Contactos 
+    "aplicar el rafce" y h3 con las clases text-center py-4
+
+6) crear el sistema de ruteo comenzando por el app.jsx en la zona de renderizado
+    <BrowserRouter>
+        <Header/>
+        <Routes>
+            <Route path="/" element={<Inicio/>} />
+            <Route path="/tienda" element={<Tienda/>} />
+            <Route path="/laptop" element={<Laptop/>} />
+            <Route path="/movil" element={<Movil/>} />
+            <Route path="/categorias/:id" element={<Categorias/>} />
+            <Route path="/contactos" element={<Contactos/>} />
+            <Route path="*" element={<Inicio/>} />
+        </Routes>
+        <Footer/>
+    </BrowserRouter>
+
+
+    
+    verificar la navegacion desde localhost:5137/tienda y todas las demas
+8) ahora crear la otra parte de la navegacion desde el componente Header
+     <Link to="/inicio" className="nav-link active" aria-current="page" href="/">Inicio</Link> 
+     cambiando el a por Link to="/movil" con la ruta a la paginas
+9) crear un componente carrusel y agregarlo en la pagina inicio, no olvidar el fragment
