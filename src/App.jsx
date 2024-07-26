@@ -1,27 +1,32 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Header from "./components/Header"
+import Inicio from "./pages/Inicio"
+import Tienda from "./pages/Tienda"
+import Laptop from "./pages/Laptop"
+import Movil from "./pages/Movil"
+import Categorias from "./pages/Categorias"
+import Contactos from "./pages/Contactos"
+import Footer from "./components/Footer"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { faTruckFast } from '@fortawesome/free-solid-svg-icons'
+
 
 const App = () => {
   return (
-    <>
-    
-    <h3 className="text-center py-4">Hola Mundo</h3>
-    <div className='text-center'>
-        <FontAwesomeIcon icon={faHome} className='text-danger fs-1 mx-3 ' />
-        <FontAwesomeIcon icon={faUser} className='text-success fs-1 mx-3'/>
-        <FontAwesomeIcon icon={faCartShopping}  className='text-warning fs-1 mx-3'/>
-    </div>
-    <div className='text-center py-5'>
-
-      <FontAwesomeIcon icon={faTruckFast} className='icono' />
-    </div>
- 
-
-    </>
+    <BrowserRouter>
+      <Header/>
+        <main>
+        <Routes>
+            <Route path="/" element={<Inicio/>} />
+            <Route path="/tienda" element={<Tienda/>} />
+            <Route path="/laptop" element={<Laptop/>} />
+            <Route path="/movil" element={<Movil/>} />
+            <Route path="/categorias/:id" element={<Categorias/>} />
+            <Route path="/contactos" element={<Contactos/>} />
+            <Route path="*" element={<Inicio/>} />
+        </Routes>
+        </main>
+      <Footer/>
+    </BrowserRouter>
   )
 }
 
